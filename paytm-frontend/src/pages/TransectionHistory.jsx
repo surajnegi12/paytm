@@ -9,7 +9,7 @@ export default function TransectionHistory() {
     const token = localStorage.getItem('token');
     async function getHistory() {
       try {
-        const response = await axios.get(`${URL}api/v1/account/transection/history`, {
+        const response = await axios.get(`${URL}/api/v1/account/transection/history`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setHistoryTransection(response.data.history);
