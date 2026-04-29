@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { URL } from '../assets/url';
 
 export default function TransectionHistory() {
   const [historyTransection, setHistoryTransection] = useState([]);
@@ -8,7 +9,7 @@ export default function TransectionHistory() {
     const token = localStorage.getItem('token');
     async function getHistory() {
       try {
-        const response = await axios.get("http://localhost:3000/api/v1/account/transection/history", {
+        const response = await axios.get(`${URL}api/v1/account/transection/history`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setHistoryTransection(response.data.history);

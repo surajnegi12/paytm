@@ -8,6 +8,7 @@ import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { setLoggedInCredentials } from "../feature/userSlice"
+import { URL } from "../assets/url"
 
 export const Signin = () => {
 const[username,setUsername]=useState("");
@@ -15,7 +16,7 @@ const[password,setPassword]=useState("");
 const navigate=useNavigate();
 const dispatch=useDispatch();
 async function handleSignin(){
-  const response= await axios.post("http://localhost:3000/api/v1/user/signin",{username,password});
+  const response= await axios.post(`${URL}/api/v1/user/signin`,{username,password});
   const token=response.data.token;
   localStorage.setItem("token",token);
   localStorage.setItem("user", JSON.stringify(response.data.user)); 

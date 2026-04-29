@@ -3,6 +3,7 @@ import { Button } from "./Button";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { URL } from "../assets/url";
 
 export const Users = () => {
   const [users, setUsers] = useState([]);
@@ -13,8 +14,8 @@ const currentUserId= user._id;
     async function getAllUsers() {
       try {
         const url = searchInput
-          ? `http://localhost:3000/api/v1/user/bulk?filter=${searchInput}`
-          : "http://localhost:3000/api/v1/user/bulk";
+          ? `${URL}/api/v1/user/bulk?filter=${searchInput}`
+          : `${URL}/api/v1/user/bulk`;
         const response = await axios.get(url);
         const filteredUsers = response.data.user.filter(
           (u) => u._id !== currentUserId

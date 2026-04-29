@@ -6,6 +6,7 @@ import { InputBox } from "../components/InputBox"
 import { SubHeading } from "../components/SubHeading"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import { URL } from "../assets/url"
 
 export const Signup = () => {
   const [firstName,setFirstName]=useState("");
@@ -14,7 +15,7 @@ export const Signup = () => {
   const [password,setPassword]=useState("");
   const navigate= useNavigate()
     async  function handleSigup(){
-    const res=await axios.post("http://localhost:3000/api/v1/user/signup",{username,firstName,lastName,password});
+    const res=await axios.post(`${URL}/api/v1/user/signup`,{username,firstName,lastName,password});
    
     navigate('/signin')
     }

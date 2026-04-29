@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import { URL } from '../assets/url';
 function CheckBalance() {
   const [balance, setBalance] = useState(null);
 
@@ -8,7 +8,7 @@ function CheckBalance() {
     const fetchBalance = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get('http://localhost:3000/api/v1/user/userinfo', {
+        const res = await axios.get(`${URL}/api/v1/user/userinfo`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

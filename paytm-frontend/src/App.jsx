@@ -15,12 +15,17 @@ import ProtrctedRoutes from './components/ProtrctedRoutes'
 function App() {
   const dispatch =useDispatch();
   useEffect(() => {
-    const token=localStorage.getItem('token');
-    const user = JSON.parse(localStorage.getItem("user")); 
-   if(token&&user){
-    dispatch(setLoggedInCredentials({ userDetails:user, token }));
-   }
-  }, [dispatch])
+    const token = localStorage.getItem('token');
+    const storedUser = localStorage.getItem("user");
+    if (token && storedUser && storedUser !== "undefined") {
+      try {
+        const user = JSON.parse(storedUser);
+        dispatch(setLoggedInCredentials({ userDetails: user, token }));
+      } catch (error) {
+        console.error("Error parsing user data from localStorage:", error);
+      }
+    }
+  }, [dispatch]);
 
   return (
     <BrowserRouter>

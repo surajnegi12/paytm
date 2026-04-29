@@ -1,0 +1,1 @@
+export const URL="https://paytm-2502.onrender.com";
